@@ -2,109 +2,57 @@ package com.example.bamlab1;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
 import android.view.View;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.bamlab1.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("BAM", "MainActivity onCreate");
+        setContentView(R.layout.activity_main);
+        Log.d("BAMLABx", "MainActivity onCreate");
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        Button buttonOpenSecond = findViewById(R.id.button_open_second);
+        buttonOpenSecond.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("BAM", "MainActivity onStart");
+        Log.d("BAMLABx", "MainActivity onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("BAM", "MainActivity onResume");
+        Log.d("BAMLABx", "MainActivity onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("BAM", "MainActivity onPause");
+        Log.d("BAMLABx", "MainActivity onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("BAM", "MainActivity onStop");
+        Log.d("BAMLABx", "MainActivity onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("BAM", "MainActivity onDestroy");
+        Log.d("BAMLABx", "MainActivity onDestroy");
     }
 }
-

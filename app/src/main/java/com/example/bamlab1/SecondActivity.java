@@ -26,30 +26,30 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("BAM", "SecondActivity onStart");
+        Log.d("BAMLABx", "SecondActivity onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("BAM", "SecondActivity onResume");
+        Log.d("BAMLABx", "SecondActivity onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("BAM", "SecondActivity onPause");
+        Log.d("BAMLABx", "SecondActivity onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("BAM", "SecondActivity onStop");
+        Log.d("BAMLABx", "SecondActivity onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("BAM", "SecondActivity onDestroy");
+        Log.d("BAMLABx", "SecondActivity onDestroy");
     }
 }

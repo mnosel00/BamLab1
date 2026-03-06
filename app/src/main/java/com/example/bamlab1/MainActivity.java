@@ -1,6 +1,7 @@
 package com.example.bamlab1;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+    private PowerReceiver powerReceiver = new PowerReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_POWER_CONNECTED);
+        filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+
+        registerReceiver(powerReceiver, filter);
     }
 
 
@@ -53,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        unregisterReceiver(powerReceiver);
         Log.d("BAMLABx", "MainActivity onDestroy");
     }
 }

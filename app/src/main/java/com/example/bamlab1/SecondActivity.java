@@ -1,5 +1,6 @@
 package com.example.bamlab1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,13 +15,11 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_second);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        Log.d("BAMLABx", "SecondActivity onCreate");
+
+        Intent serviceIntent = new Intent(this, MyService.class);
+        startService(serviceIntent);
     }
 
     @Override
@@ -51,5 +50,8 @@ public class SecondActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d("BAMLABx", "SecondActivity onDestroy");
+
+        Intent serviceIntent = new Intent(this, MyService.class);
+        stopService(serviceIntent);
     }
 }
